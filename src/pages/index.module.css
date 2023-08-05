@@ -20,3 +20,21 @@
 .deleteBtn {
   float: right;
 }
+.under {
+  display: flex;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  height: 20vh;
+  width: 20vw;
+  background-color: #ccf;
+}
