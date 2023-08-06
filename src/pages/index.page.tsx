@@ -10,7 +10,7 @@ const Home = () => {
   const [count, setCount] = useState([0, 50]);
 
   const getCount = useCallback(async () => {
-    const newCount = await apiClient.rooms.controller.get();
+    const newCount = await apiClient.rooms.get2.post({ body: 'post' });
     setCount(newCount.body);
   }, []);
 

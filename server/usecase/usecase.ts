@@ -17,6 +17,16 @@ export const countUsecase = {
   getCurrentCount: async (userId: string): Promise<CountModel> => {
     return CountRepository.read(userId);
   },
+  updateCount: async (userId: string) => {
+    const currentCount = await CountRepository.read(userId);
+
+    const UpdateCount = {
+      userId: currentCount.userId,
+      x: currentCount.x + 1,
+      y: currentCount.y + 1,
+    };
+    await CountRepository.save(UpdateCount);
+  },
 };
 
 export const getCount = {
@@ -34,7 +44,8 @@ export const getCount = {
 };
 
 export const useCase = {
-  push: async (wor: number) => {
+  push: async (wor: number, userId: string) => {
+    countUsecase.updateCount(userId);
     return wor;
   },
 };
