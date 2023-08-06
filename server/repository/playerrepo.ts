@@ -4,7 +4,7 @@ import { prismaClient } from '$/service/prismaClient';
 import type { Count } from '@prisma/client';
 
 const toModel = (prismaCount: Count): CountModel => ({
-  userId: userIdParser.parse(prismaCount.id),
+  userId: userIdParser.parse(prismaCount.userId),
   x: prismaCount.x,
   y: prismaCount.y,
 });
@@ -28,7 +28,7 @@ export const CountRepository = {
     const count = await prismaClient.count.findFirst({
       where: { userId },
     });
-    if (!count) throw new Error("count don't exist");
+    if (!count) throw new Error("count doesn't exist");
     return toModel(count);
   },
 };

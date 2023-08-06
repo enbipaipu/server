@@ -32,7 +32,8 @@ const Home = () => {
     <>
       <div className={styles.under}>
         <div className={styles.button} onClick={push}>
-          <h1>{count[0]}</h1>
+          <h1 className={styles.left}>{count[0]}</h1>
+          <h1 className={styles.right}>{count[1]}</h1>
         </div>
       </div>
     </>

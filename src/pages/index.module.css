@@ -38,3 +38,10 @@
   width: 20vw;
   background-color: #ccf;
 }
+
+.left {
+  background-color: aqua;
+}
+.right {
+  background-color: tomato;
+}
