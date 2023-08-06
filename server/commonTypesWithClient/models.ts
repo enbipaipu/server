@@ -13,3 +13,9 @@ export type TaskModel = {
   done: boolean;
   created: number;
 };
+
+export type CountModel = {
+  userId: UserId;
+  x: number;
+  y: number;
+};
