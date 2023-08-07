@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Loading } from 'src/components/Loading/Loading';
 import { apiClient } from 'src/utils/apiClient';
 import { userAtom } from '../atoms/user';
@@ -9,29 +9,34 @@ const Home = () => {
   const [user] = useAtom(userAtom);
   const [count, setCount] = useState([0, 50]);
 
-  // const getCount = useCallback(async () => {
-  //   const newCount = await apiClient.rooms.get2.post({ body: 'post' });
-  //   setCount(newCount.body);
-  // }, []);
-
-  // useEffect(() => {
-  //   const num = setInterval(getCount, 2000);
-  //   return () => {
-  //     clearInterval(num);
-  //   };
-  // }, [getCount]);
-
-  if (!user) return <Loading visible />;
-  let user_id = 'unkown';
+  let user_id = 'no UserId';
 
   const getUserId = async () => {
-    user_id = 'user';
+    const result = await apiClient.rooms.getPlayerId.post({ body: { userId: user_id } });
+    user_id = result.body;
+    console.log(user_id);
   };
 
+  //ok
+  const getCount = useCallback(async () => {
+    const newCount = await apiClient.rooms.get2.post({ body: { userId: user_id } });
+    setCount(newCount.body);
+  }, [user_id]);
+
+  useEffect(() => {
+    const num = setInterval(getCount, 5000);
+    return () => {
+      clearInterval(num);
+    };
+  }, [getCount]);
+
+  if (!user) return <Loading visible />;
+
+  //ok
   const push = async () => {
     const Body = {
       body: 1,
-      body2: 'post',
+      body2: user_id,
     };
     const res = await apiClient.rooms.controller.$post({ body: Body });
     console.log(res);

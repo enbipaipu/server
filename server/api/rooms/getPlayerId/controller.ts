@@ -1,5 +1,10 @@
-import { defineController } from './$relay'
+import { useCase } from '$/usecase/usecase';
+import { defineController } from './$relay';
 
 export default defineController(() => ({
-  get: () => ({ status: 200, body: 'Hello' })
-}))
+  post: async ({ body }) => {
+    const { userId } = body;
+    const result = await useCase.create(userId);
+    return { status: 200, body: result };
+  },
+}));

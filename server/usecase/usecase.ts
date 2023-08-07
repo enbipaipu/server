@@ -30,8 +30,10 @@ export const useCase = {
     return wor;
   },
   create: async (userId: string) => {
-    if (userId === null) {
+    if (userId === 'no UserId') {
       return playerUseCase.createNewPlayer();
+    } else {
+      return 'あなたはすでにuserIdを持っています。';
     }
   },
 };
