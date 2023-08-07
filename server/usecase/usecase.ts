@@ -1,3 +1,20 @@
+import type { PlayerModel } from '$/commonTypesWithClient/models';
+import { playerRepository } from '$/repository/playerrepo';
+import { UserIdParser } from '$/service/idParsers';
+import { randomUUID } from 'crypto';
+
+export const playerUseCase = {
+  createNewPlayer: async () => {
+    const newPlayer: PlayerModel = {
+      userId: UserIdParser.parse(randomUUID()),
+      x: 0,
+      y: 50,
+    };
+    await playerRepository.save(newPlayer);
+    return newPlayer.userId;
+  },
+};
+
 export const getCount = {
   get_count: async (userId: string) => {
     console.log(userId);
@@ -12,5 +29,9 @@ export const useCase = {
     console.log(userId);
     return wor;
   },
-  createUserId: async () => {},
+  create: async (userId: string) => {
+    if (userId === null) {
+      return playerUseCase.createNewPlayer();
+    }
+  },
 };

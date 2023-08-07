@@ -14,7 +14,7 @@ export type TaskModel = {
   created: number;
 };
 
-export type CountModel = {
+export type PlayerModel = {
   userId: UserId;
   x: number;
   y: number;
