@@ -34,14 +34,18 @@
   justify-content: center;
   align-items: center;
   border: 2px solid #000;
-  height: 20vh;
-  width: 20vw;
+  height: 10vh;
+  width: 10vw;
   background-color: #ccf;
 }
 
 .left {
   background-color: aqua;
+  width: 10vw;
+  height: 10vh;
 }
 .right {
   background-color: tomato;
+  width: 10vw;
+  height: 10vh;
 }

@@ -1,7 +1,6 @@
-CREATE TABLE "Count" (
-  "userId" TEXT NOT NULL,
-  "x" DOUBLE PRECISION NOT NULL,
-  "y" DOUBLE PRECISION NOT NULL,
-
-  CONSTRAINT "Count_pkey" PRIMARY KEY ("userId")
+--CreateTable
+CREATE TABLE "Player" (
+  'userId' TEXT NOT NULL,
+  'x' TEXT NOT NULL,
+  'y' TEXT NOT NULL,
 )

@@ -3,6 +3,7 @@ import { defineController } from './$relay';
 
 export default defineController(() => ({
   post: async ({ body }) => {
-    return { status: 200, body: await useCase.push(body) };
+    const { body: bodyValue, body2: body2Value } = body;
+    return { status: 200, body: await useCase.push(bodyValue, body2Value) };
   },
 }));

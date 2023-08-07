@@ -13,9 +13,3 @@ model Task {
   done      Boolean
   createdAt DateTime
 }
-
-model Count {
-  userId String @id
-  x      Float
-  y      Float
-}
