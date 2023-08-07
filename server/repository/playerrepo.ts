@@ -11,18 +11,25 @@ const toModel = (prismaPlayer: Player): PlayerModel => ({
 
 export const playerRepository = {
   save: async (player: PlayerModel): Promise<void> => {
-    await prismaClient.player.upsert({
-      where: { userId: player.userId },
-      update: {
-        x: player.x,
-        y: player.y,
-      },
-      create: {
-        userId: player.userId,
-        x: player.x,
-        y: player.y,
-      },
-    });
+    try {
+      console.log('eeeee');
+      await prismaClient.player.upsert({
+        where: { userId: player.userId },
+        update: {
+          x: player.x,
+          y: player.y,
+        },
+        create: {
+          userId: player.userId,
+          x: player.x,
+          y: player.y,
+        },
+      });
+      console.log('fffff');
+    } catch (error) {
+      console.error('Player save error:', error);
+      throw error;
+    }
   },
   read: async (userId: string): Promise<PlayerModel> => {
     const player = await prismaClient.player.findFirst({
