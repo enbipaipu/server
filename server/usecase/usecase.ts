@@ -35,9 +35,9 @@ export const getCount = {
 };
 
 export const useCase = {
-  push: async (wor: number, userId: string) => {
+  push: async (userId: string) => {
     console.log('pushの', userId);
-    return wor;
+    return 'pushの入力に成功しました';
   },
   create: async () => {
     console.log('aaaaaaa');

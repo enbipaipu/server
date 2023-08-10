@@ -3,7 +3,6 @@ import { defineController } from './$relay';
 
 export default defineController(() => ({
   post: async ({ body }) => {
-    const { userId } = body;
-    return { status: 200, body: await getCount.get_count(userId) };
+    return { status: 200, body: await getCount.get_count(body) };
   },
 }));

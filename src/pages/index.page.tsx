@@ -8,20 +8,20 @@ import styles from './index.module.css';
 const Home = () => {
   const [user] = useAtom(userAtom);
   const [count, setCount] = useState([0, 50]);
-
-  let user_id = 'no UserId';
+  const [user_Id, setUser_Id] = useState('no UserId');
 
   const getUserId = async () => {
-    const result = await apiClient.rooms.getPlayerId.post({ body: { userId: user_id } });
-    user_id = result.body;
-    console.log(user_id);
+    const result = await apiClient.rooms.getPlayerId.get();
+
+    setUser_Id(result.body.userId);
+    console.log(user_Id);
   };
 
   //ok
   const getCount = useCallback(async () => {
-    const newCount = await apiClient.rooms.get2.post({ body: { userId: user_id } });
+    const newCount = await apiClient.rooms.get2.post({ body: user_Id });
     setCount(newCount.body);
-  }, [user_id]);
+  }, [user_Id]);
 
   useEffect(() => {
     const num = setInterval(getCount, 5000);
@@ -34,18 +34,14 @@ const Home = () => {
 
   //ok
   const push = async () => {
-    const Body = {
-      body: 1,
-      body2: user_id,
-    };
-    const res = await apiClient.rooms.controller.$post({ body: Body });
+    const res = await apiClient.rooms.controller.$post({ body: user_Id });
     console.log(res);
   };
 
   return (
     <>
       <div className={styles.under}>
-        <h1>{user_id}</h1>
+        <h1>{user_Id}</h1>
         <div className={styles.button} onClick={getUserId}>
           getUserId
         </div>
