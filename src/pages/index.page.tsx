@@ -9,12 +9,11 @@ const Home = () => {
   const [user] = useAtom(userAtom);
   const [count, setCount] = useState([0, 50]);
   const [user_Id, setUser_Id] = useState('no UserId');
-
+  console.log(user_Id);
   const getUserId = async () => {
     const result = await apiClient.rooms.getPlayerId.get();
 
     setUser_Id(result.body.userId);
-    console.log(user_Id);
   };
 
   //ok
