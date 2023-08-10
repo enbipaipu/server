@@ -33,7 +33,7 @@ const Home = () => {
 
   //ok
   const push = async () => {
-    const res = await apiClient.rooms.controller.post({ body: { userId: user_Id } });
+    const res = await apiClient.rooms.controller2.post({ body: { userId: user_Id } });
     console.log(res.body);
   };
 
