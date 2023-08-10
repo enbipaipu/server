@@ -1,6 +1,8 @@
 export type Methods = {
   post: {
-    reqBody: string;
+    reqBody: {
+      userId: string;
+    };
     resBody: number[];
   };
 };

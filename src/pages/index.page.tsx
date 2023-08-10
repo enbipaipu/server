@@ -9,7 +9,7 @@ const Home = () => {
   const [user] = useAtom(userAtom);
   const [count, setCount] = useState([0, 50]);
   const [user_Id, setUser_Id] = useState('no UserId');
-  console.log(user_Id);
+
   const getUserId = async () => {
     const result = await apiClient.rooms.getPlayerId.get();
 
@@ -18,7 +18,7 @@ const Home = () => {
 
   //ok
   const getCount = useCallback(async () => {
-    const newCount = await apiClient.rooms.get2.post({ body: user_Id });
+    const newCount = await apiClient.rooms.get2.post({ body: { userId: user_Id } });
     setCount(newCount.body);
   }, [user_Id]);
 
@@ -33,8 +33,8 @@ const Home = () => {
 
   //ok
   const push = async () => {
-    const res = await apiClient.rooms.controller.$post({ body: user_Id });
-    console.log(res);
+    const res = await apiClient.rooms.controller.post({ body: { userId: user_Id } });
+    console.log(res.body);
   };
 
   return (
