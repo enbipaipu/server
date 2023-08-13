@@ -17,5 +17,4 @@ export type TaskModel = {
 export type PlayerModel = {
   userId: UserId;
   x: number;
-  y: number;
 };

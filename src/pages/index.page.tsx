@@ -7,7 +7,7 @@ import styles from './index.module.css';
 
 const Home = () => {
   const [user] = useAtom(userAtom);
-  const [count, setCount] = useState([0, 50]);
+  const [count, setCount] = useState(0);
   const [user_Id, setUser_Id] = useState('52d93b71-9e0b-49e9-8aa5-9303e506c419');
 
   const getUserId = async () => {
@@ -47,8 +47,7 @@ const Home = () => {
         <div className={styles.button} onClick={push}>
           count+1
         </div>
-        <h1 className={styles.left}>{count[0]}</h1>
-        <h1 className={styles.right}>{count[1]}</h1>
+        <h1 className={styles.left}>{count}</h1>
       </div>
     </>
   );

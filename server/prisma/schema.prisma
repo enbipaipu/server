@@ -17,5 +17,4 @@ model Task {
 model Player {
   userId String @id
   x      Float
-  y      Float
 }

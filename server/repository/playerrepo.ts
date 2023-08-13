@@ -6,7 +6,6 @@ import type { Player } from '@prisma/client';
 const toModel = (prismaPlayer: Player): PlayerModel => ({
   userId: UserIdParser.parse(prismaPlayer.userId),
   x: prismaPlayer.x,
-  y: prismaPlayer.y,
 });
 
 export const playerRepository = {
@@ -16,12 +15,10 @@ export const playerRepository = {
         where: { userId: player.userId },
         update: {
           x: player.x,
-          y: player.y,
         },
         create: {
           userId: player.userId,
           x: player.x,
-          y: player.y,
         },
       });
     } catch (error) {

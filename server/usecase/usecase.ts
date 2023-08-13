@@ -8,7 +8,6 @@ export const playerUseCase = {
     const newPlayer: PlayerModel = {
       userId: UserIdParser.parse(randomUUID()),
       x: 0,
-      y: 40,
     };
     await playerRepository.save(newPlayer);
     return newPlayer.userId;
@@ -21,7 +20,6 @@ export const playerUseCase = {
     const newPlayer: PlayerModel = {
       userId: rePlayer.userId,
       x: (rePlayer.x += 1),
-      y: (rePlayer.y += 1),
     };
     await playerRepository.save(newPlayer);
   },
@@ -32,9 +30,8 @@ export const getCount = {
     console.log('get_countの', userId);
     const result = playerUseCase.getCount(userId);
     const xValue = (await result).x;
-    const yValue = (await result).y;
 
-    return [xValue, yValue];
+    return xValue;
   },
 };
 
