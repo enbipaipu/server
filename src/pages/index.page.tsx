@@ -8,7 +8,7 @@ import styles from './index.module.css';
 const Home = () => {
   const [user] = useAtom(userAtom);
   const [count, setCount] = useState([0, 50]);
-  const [user_Id, setUser_Id] = useState('no UserId');
+  const [user_Id, setUser_Id] = useState('52d93b71-9e0b-49e9-8aa5-9303e506c419');
 
   const getUserId = async () => {
     const result = await apiClient.rooms.getPlayerId.get();

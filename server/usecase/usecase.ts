@@ -16,6 +16,15 @@ export const playerUseCase = {
   getCount: async (userId: string) => {
     return await playerRepository.read(userId);
   },
+  changeCount: async (userId: string) => {
+    const rePlayer = await playerRepository.read(userId);
+    const newPlayer: PlayerModel = {
+      userId: rePlayer.userId,
+      x: (rePlayer.x += 1),
+      y: (rePlayer.y += 1),
+    };
+    await playerRepository.save(newPlayer);
+  },
 };
 
 export const getCount = {
@@ -32,6 +41,7 @@ export const getCount = {
 export const useCase = {
   push: async (userId: string) => {
     console.log('pushの', userId);
+    playerUseCase.changeCount(userId);
     return 'pushの入力に成功しました';
   },
   create: async () => {

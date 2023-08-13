@@ -3,6 +3,6 @@ export type Methods = {
     reqBody: {
       userId: string;
     };
-    resBody: number[];
+    resBody: string;
   };
 };
