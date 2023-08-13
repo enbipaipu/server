@@ -45,4 +45,9 @@ export const useCase = {
     console.log('aaaaaaa');
     return playerUseCase.createNewPlayer();
   },
+  delete: async (userId: string) => {
+    await playerRepository.delete(userId);
+    console.log('delete');
+    return 'deleteしました';
+  },
 };
